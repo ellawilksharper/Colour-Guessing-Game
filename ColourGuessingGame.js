@@ -1,4 +1,4 @@
-var numSquares = 6;
+var numSquares = 9;
 var colors = [];
 var pickedColor;
 var squares = document.querySelectorAll(".square");
@@ -24,9 +24,28 @@ function setupModeButtons() {
   for(var i = 0; i < modeButtons.length; i++) {
     modeButtons[i].addEventListener("click", function() {
       modeButtons[0].classList.remove("selected");
-      modeButtons[1].classList.remove("selected");
-      this.classList.add("selected");
-      this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+      modeButtons[1].classList.remove("extrahardselected");
+        this.classList.add("selected");
+        this.classList.add("extrahardselected");
+      
+        //this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+
+        switch (this.textContent) {
+            case "Easy":
+              numSquares = 3
+                // code block
+                break;
+            case "Hard":
+              numSquares = 6
+                // code block
+                break;
+            case "Extra Hard":
+              numSquares = 9
+            default: 6;
+            // code block
+        }
+
+
       reset();  
     });
   } 
