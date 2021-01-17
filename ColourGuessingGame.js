@@ -23,11 +23,11 @@ function init() {
 function setupModeButtons() {
   for(var i = 0; i < modeButtons.length; i++) {
     modeButtons[i].addEventListener("click", function() {
-      modeButtons[0].classList.remove("selected");
-      modeButtons[1].classList.remove("extrahardselected");
+      modeButtons.forEach((modeButton) => {
+        modeButton.classList.remove("selected");
+      });
         this.classList.add("selected");
-        this.classList.add("extrahardselected");
-      
+
         //this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
 
         switch (this.textContent) {
@@ -46,9 +46,11 @@ function setupModeButtons() {
         }
 
 
-      reset();  
+      reset();
     });
-  } 
+  }
+  // Indicating that "EXTRA HARD" is the default setting
+  modeButtons[2].classList.add("selected");
 }
 
 function setupSquares() {
@@ -63,7 +65,7 @@ function setupSquares() {
       } else {
         this.style.backgroundColor = "#232323";
         messageDisplay.textContent = "Try Again!";
-      } 
+      }
     });
   }
 }
@@ -71,10 +73,10 @@ function setupSquares() {
 function reset() {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
-  colorDisplay.textContent = pickedColor; 
+  colorDisplay.textContent = pickedColor;
   setupSquares();
   resetBtn.textContent = "New Colours";
-  messageDisplay.textContent = "";  
+  messageDisplay.textContent = "";
   for(var i = 0; i < squares.length; i++) {
     if(colors[i]) {
       squares[i].style.display = "block";
@@ -88,13 +90,13 @@ function reset() {
 
 
 function pickColor() {
-  return colors[Math.floor(Math.random() * colors.length)]; 
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function changeColors(color) {
   for(var i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = color;
-    h1.style.backgroundColor = color; 
+    h1.style.backgroundColor = color;
   }
 }
 
@@ -113,4 +115,3 @@ function generateRandomColors(num) {
 
   return arr;
 }
-
