@@ -55,6 +55,7 @@ h1 {
 }
 
 button {
+	cursor: pointer;
 	border: none;
 	background: none;
 	text-transform: uppercase;
@@ -73,5 +74,3 @@ button:hover {
 	color: white;
 	background: steelblue;
 }
-
-
